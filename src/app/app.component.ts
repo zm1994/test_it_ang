@@ -43,6 +43,16 @@ import { AppState } from './app.service';
           About
         </a>
       </span>
+      <span>
+        <a [routerLink]=" ['./register'] ">
+          Register
+        </a>
+      </span>
+      <span>
+        <a [routerLink]=" ['./login'] ">
+          Login
+        </a>
+      </span>
     </nav>
 
     <main>

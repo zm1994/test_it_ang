@@ -1,10 +1,10 @@
 <div>
-  <form [formGroup]="formRegister" (ngSubmit)="register()">
+  <form [formGroup]="formLogin" (ngSubmit)="login()">
     <input type="text" formControlName="username" placeholder="Username">
     <input type="password" formControlName="password" placeholder="Password">
-    <input type="password" formControlName="password_confirm" placeholder="Password confirmation">
-    <button type="submit">Register</button>
+    <button type="submit">Login</button>
   </form>
+  <a [routerLink]="['/register']">Do you want to signup?</a>
   <div *ngIf="errorMessage">
     <p>{{errorMessage}}</p>
   </div>
