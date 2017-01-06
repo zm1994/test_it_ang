@@ -1,0 +1,7 @@
+<div *ngIf="currentProduct">
+  <div>Title {{currentProduct.title}}</div>
+  <div>Title {{currentProduct.text}}</div>
+  <div>Title {{currentProduct.image}}</div>
+  <list-comments [idProduct]="currentProduct.id"></list-comments>
+</div>
+

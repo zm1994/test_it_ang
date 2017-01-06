@@ -1,0 +1,7 @@
+<div *ngIf="comments && idProduct">
+  <div *ngFor="let comment of comments">
+    <div>{{comment.rate}}</div>
+    <div>{{comment.text}}</div>
+    <div>{{comment.created_at}}</div>
+  </div>
+</div>

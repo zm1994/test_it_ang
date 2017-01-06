@@ -21,7 +21,7 @@ export class AuthorizationService {
     Cookie.set('token', value)
   }
 
-  private getUserToken(): String{
+  getUserToken(): String{
     return Cookie.get('token')
   }
 

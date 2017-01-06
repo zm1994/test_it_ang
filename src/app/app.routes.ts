@@ -7,6 +7,7 @@ import { AuthorizationService } from './services/authorization.service'
 //import { AuthActivateRoute } from './register/auth_activate_route'
 import { DataResolver } from './app.resolver';
 import {LoginComponent} from "./login/login.component";
+import { ProductsComponent } from './products/products.compoennt'
 
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
@@ -15,5 +16,6 @@ export const ROUTES: Routes = [
   { path: 'detail', loadChildren: './+detail/index#DetailModule'},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'products', component: ProductsComponent},
   { path: '**',    component: NoContentComponent },
 ];

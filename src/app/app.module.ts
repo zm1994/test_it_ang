@@ -31,7 +31,10 @@ import { XLargeDirective } from './home/x-large';
 import { RegisterComponent } from './register'
 import { LoginComponent } from './login/login.component'
 //import {AuthActivateRoute} from "./register/auth_activate_route";
-
+import { ProductsComponent } from './products/products.compoennt'
+import { AuthorizationService } from './services/authorization.service'
+import { ProductComponent } from './products/product.component'
+import { CommentsComponent } from './comment/list-comments.component'
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -54,6 +57,9 @@ type StoreType = {
     AboutComponent,
     HomeComponent,
     LoginComponent,
+    CommentsComponent,
+    ProductComponent,
+    ProductsComponent,
     RegisterComponent,
     NoContentComponent,
     XLargeDirective
@@ -67,7 +73,8 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AuthorizationService
     //AuthActivateRoute
   ]
 })

@@ -1,0 +1,7 @@
+<div *ngFor="let product of products " (click)="onSelectProduct(product)">
+  <div>Title {{product.title}}</div>
+  <div>Title {{product.text}}</div>
+  <div>Title {{product.image}}</div>
+</div>
+<product [currentProduct]="selectedProduct"></product>
+
