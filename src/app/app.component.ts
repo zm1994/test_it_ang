@@ -4,10 +4,12 @@
 import {
   Component,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
+  OnChanges
 } from '@angular/core';
 import { AppState } from './app.service';
-
+import { AuthorizationService } from './services/authorization.service'
+import { Subscription } from 'rxjs/Subscription'
 /*
  * App Component
  * Top Level Component
@@ -15,80 +17,25 @@ import { AppState } from './app.service';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.component.css'
-  ],
-  template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
-      <span>
-        <a [routerLink]=" ['./register'] ">
-          Register
-        </a>
-      </span>
-      <span>
-        <a [routerLink]=" ['./login'] ">
-          Login
-        </a>
-      </span>
-      <span>
-        <a [routerLink]=" ['./products'] ">
-          Products
-        </a>
-      </span>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
-  `
+  styleUrls: ['../assets/css/app.component.css'],
+  templateUrl: 'app.component.html',
+  providers: [AuthorizationService]
 })
-export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
+export class AppComponent implements  OnInit {
+  userLogged: boolean;
+  subscription: Subscription;
 
   constructor(
-    public appState: AppState
-  ) {}
-
-  public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    public appState: AppState,
+    private authServ: AuthorizationService) {
+      this.authServ.authentificated.subscribe((value: boolean) => console.log(value))
   }
 
+  ngOnInit() {
+    //hide links login and signup if logged
+    //this.subscription = this.authServ.authentificated.subscribe((value: boolean) => this.userLogged = value);
+    
+  }
 }
 
 /*

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, Http, URLSearchParams, Response } from "@angular/http";
-import { LoginResponse } from '../model/login_responce.model'
+import { LoginResponse } from '../model/login_response.model'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { BehaviorSubject } from 'rxjs';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import {CanActivate} from "@angular/router";
 
@@ -12,24 +13,26 @@ export class AuthorizationService {
   api_root_path = 'http://smktesting.herokuapp.com/'
 
   constructor(private http: Http){}
+  public authentificated = new BehaviorSubject(false)
 
   userIsLoggedIn(): boolean{
     return !!this.getUserToken()
   }
 
-  private setUserToken(value: String){
+  private setUserToken(value: string){
+    //send session user token, it will be used by check if user logged
     Cookie.set('token', value)
   }
 
-  getUserToken(): String{
+  getUserToken(): string{
     return Cookie.get('token')
   }
 
-  createUser(name: String, password: String): Observable<LoginResponse>{
+  createUser(name: string, password: string): Observable<LoginResponse>{
     return this.sendAuthorizationRequest(this.api_root_path + '/api/register/?format=json', name, password)
   }
 
-  loginUser(name: String, password: String): Observable<LoginResponse>{
+  loginUser(name: string, password: string): Observable<LoginResponse>{
     return this.sendAuthorizationRequest(this.api_root_path + '/api/login/?format=json', name, password)
   }
 
@@ -53,6 +56,8 @@ export class AuthorizationService {
   private parseResponse(resp: LoginResponse) {
     if (resp.success) {
       this.setUserToken(resp.token)
+      this.authentificated.next(true);
+      console.log(this.authentificated.value)
     }
   }
 }

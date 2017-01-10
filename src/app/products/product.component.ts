@@ -8,12 +8,12 @@ import { Observable } from 'rxjs/Observable'
 
   selector: 'product',
   templateUrl: 'product.component.html',
-  providers: [ProductService]
+  providers: [ProductService, AuthorizationService],
+  styleUrls: ['../../assets/css/product.component.css'],
 })
 
 export class ProductComponent {
+  //display component of selected product from list pproducts
   @Input() currentProduct: Product;
-
-  constructor(private productServ: ProductService) {
-  }
+  constructor() {}
 }

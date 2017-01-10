@@ -1,21 +1,14 @@
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import {RegisterComponent} from './register'
+import {SignupComponent} from './authorization/signup/signup.component';
 import { AuthorizationService } from './services/authorization.service'
-//import { AuthActivateRoute } from './register/auth_activate_route'
 import { DataResolver } from './app.resolver';
-import {LoginComponent} from "./login/login.component";
-import { ProductsComponent } from './products/products.compoennt'
+import {LoginComponent} from "./authorization/login/login.component";
+import { ProductsComponent } from './products/products.component'
 
 export const ROUTES: Routes = [
-  { path: '',      component: HomeComponent },
-  { path: 'home',  component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'detail', loadChildren: './+detail/index#DetailModule'},
-  { path: 'register', component: RegisterComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'products', component: ProductsComponent},
+  { path: '', component: ProductsComponent},
   { path: '**',    component: NoContentComponent },
 ];

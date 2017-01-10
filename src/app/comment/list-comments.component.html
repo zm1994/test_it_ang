@@ -1,7 +1,5 @@
-<div *ngIf="comments && idProduct">
-  <div *ngFor="let comment of comments">
-    <div>{{comment.rate}}</div>
-    <div>{{comment.text}}</div>
-    <div>{{comment.created_at}}</div>
-  </div>
+<div class="container_comments" *ngIf="comments && idProduct">
+  <comment [comment]="comment_item" *ngFor="let comment_item of comments | paginate: { itemsPerPage: 3, currentPage: p }"></comment>
+  <pagination-controls class="paginate_control" (pageChange)="p = $event"></pagination-controls>
 </div>
+<comment-sender [idProduct]="idProduct"></comment-sender>

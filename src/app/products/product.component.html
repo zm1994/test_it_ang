@@ -1,7 +1,15 @@
-<div *ngIf="currentProduct">
-  <div>Title {{currentProduct.title}}</div>
-  <div>Title {{currentProduct.text}}</div>
-  <div>Title {{currentProduct.image}}</div>
+<div class="product_container" *ngIf="currentProduct">
+  <!--<a simplePageScroll href="#listComments">Show comments</a>-->
+  <div class="product_col">
+    <img class="image_product" src="{{currentProduct.image}}" onerror='this.src="../assets/img/default_product.png"'>
+  </div>
+  <div class="product_col">
+    <div class="content">
+      <div class="product_title">{{currentProduct.title}}</div>
+      <h2>DESCRIPTION</h2>
+      <div class="product_descrip">{{currentProduct.text}}</div>
+    </div>
+  </div>
   <list-comments [idProduct]="currentProduct.id"></list-comments>
 </div>
 

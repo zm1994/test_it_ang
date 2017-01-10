@@ -1,0 +1,9 @@
+<div class="comment_list_item" *ngIf="comment">
+    <div class="creator_comment">Created by: {{comment.created_by.username || "Unknown" }}</div>
+    <div class="rate">
+        <img src="../../assets/img/choised_rate.png" *ngFor="let rate_item of arrayRate">
+    </div>
+    <div class="time_create">{{comment.created_at}}</div>
+    <div class="content_comment">{{comment.text}}</div>
+<div>
+    

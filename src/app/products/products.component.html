@@ -1,7 +1,15 @@
-<div *ngFor="let product of products " (click)="onSelectProduct(product)">
-  <div>Title {{product.title}}</div>
-  <div>Title {{product.text}}</div>
-  <div>Title {{product.image}}</div>
+<div [ngClass]="{'hide_list': !!selectedProduct}" class="container_products">
+  <a class="list_product_item" 
+    *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: p }" 
+    (click)="onSelectProduct(product)">
+      <!--<div>Title {{product.title}}</div>
+      <div>Title {{product.text}}</div>
+      <div>Title {{product.image}}</div>-->
+      <img src="{{product.image}}" onerror='this.src="../assets/img/default_product.png"'>
+      <div class="product_item_title">Title {{product.title}}</div>
+  </a>
+  <pagination-controls class="paginate_control" (pageChange)="p = $event"></pagination-controls>
 </div>
+<a href="#" class="return_list_prod" *ngIf="selectedProduct" (click)="disableSelectedProduct()">Show list products</a>
 <product [currentProduct]="selectedProduct"></product>
 

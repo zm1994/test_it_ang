@@ -14,6 +14,9 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
+import {Ng2PaginationModule} from 'ng2-pagination';
+import {Ng2SimplePageScrollModule} from 'ng2-simple-page-scroll';
+import { RatingModule } from 'ng2-rating'
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -24,17 +27,18 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
-import { RegisterComponent } from './register'
-import { LoginComponent } from './login/login.component'
-//import {AuthActivateRoute} from "./register/auth_activate_route";
-import { ProductsComponent } from './products/products.compoennt'
+// import { XLargeDirective } from './home/x-large';
+import { SignupComponent } from './authorization/signup/signup.component';
+import { LoginComponent } from './authorization/login/login.component'
+import { ProductsComponent } from './products/products.component'
 import { AuthorizationService } from './services/authorization.service'
 import { ProductComponent } from './products/product.component'
 import { CommentsComponent } from './comment/list-comments.component'
+import { CommentComponent } from './comment/comment.component'
+import { CommentSenderComponent } from './comment/comment_sender.component'
+import { AlertComponent } from './alert/alert.component'
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -54,20 +58,24 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    AboutComponent,
-    HomeComponent,
+    AlertComponent,
     LoginComponent,
     CommentsComponent,
+    CommentComponent,
+    CommentSenderComponent,
     ProductComponent,
     ProductsComponent,
-    RegisterComponent,
+    SignupComponent,
     NoContentComponent,
-    XLargeDirective
+    // XLargeDirective
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
+    Ng2PaginationModule,
+    Ng2SimplePageScrollModule.forRoot(),
     ReactiveFormsModule,
+    RatingModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
@@ -85,41 +93,40 @@ export class AppModule {
     public appState: AppState
   ) {}
 
-  public hmrOnInit(store: StoreType) {
-    if (!store || !store.state) {
-      return;
-    }
-    console.log('HMR store', JSON.stringify(store, null, 2));
-    // set state
-    this.appState._state = store.state;
-    // set input values
-    if ('restoreInputValues' in store) {
-      let restoreInputValues = store.restoreInputValues;
-      setTimeout(restoreInputValues);
-    }
+  // public hmrOnInit(store: StoreType) {
+  //   if (!store || !store.state) {
+  //     return;
+  //   }
+  //   console.log('HMR store', JSON.stringify(store, null, 2));
+  //   // set state
+  //   this.appState._state = store.state;
+  //   // set input values
+  //   if ('restoreInputValues' in store) {
+  //     let restoreInputValues = store.restoreInputValues;
+  //     setTimeout(restoreInputValues);
+  //   }
 
-    this.appRef.tick();
-    delete store.state;
-    delete store.restoreInputValues;
-  }
+  //   this.appRef.tick();
+  //   delete store.state;
+  //   delete store.restoreInputValues;
+  // }
 
-  public hmrOnDestroy(store: StoreType) {
-    const cmpLocation = this.appRef.components.map((cmp) => cmp.location.nativeElement);
-    // save state
-    const state = this.appState._state;
-    store.state = state;
-    // recreate root elements
-    store.disposeOldHosts = createNewHosts(cmpLocation);
-    // save input values
-    store.restoreInputValues  = createInputTransfer();
-    // remove styles
-    removeNgStyles();
-  }
+  // public hmrOnDestroy(store: StoreType) {
+  //   const cmpLocation = this.appRef.components.map((cmp) => cmp.location.nativeElement);
+  //   // save state
+  //   const state = this.appState._state;
+  //   store.state = state;
+  //   // recreate root elements
+  //   store.disposeOldHosts = createNewHosts(cmpLocation);
+  //   // save input values
+  //   store.restoreInputValues  = createInputTransfer();
+  //   // remove styles
+  //   removeNgStyles();
+  // }
 
-  public hmrAfterDestroy(store: StoreType) {
-    // display new elements
-    store.disposeOldHosts();
-    delete store.disposeOldHosts;
-  }
-
+  // public hmrAfterDestroy(store: StoreType) {
+  //   // display new elements
+  //   store.disposeOldHosts();
+  //   delete store.disposeOldHosts;
+  // }
 }
