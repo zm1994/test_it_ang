@@ -1,0 +1,22 @@
+<!--<div *ngIf="userLogged">-->
+<div class="container_comment" *ngIf="userLogged">
+    <h2>Send comment</h2>
+    <form [formGroup]="formComment" (ngSubmit)="sendComment()">
+        <div class="rate_container">
+            <div class="rate_desc">Select rating</div>
+            <rating class="rate_stars" [(ngModel)]="commentForSend.rate" formControlName="rating"
+                [max]="5"
+                fullIcon="★"
+                emptyIcon="☆"
+                [readonly]="false"
+                [disabled]="false"
+                [required]="true"
+                [float]="true"
+                [titles]="['one', 'two', 'three', 'four', 'five']">
+            </rating>
+        </div>
+        <textarea formControlName="comment" [(ngModel)]="commentForSend.text" placeholder="Input your comment..."></textarea>
+        <button class="btn-submit" type="submit">Send</button>
+    </form>
+    <alert [alertMessage]="errorMessage"></alert>
+</div>

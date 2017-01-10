@@ -1,0 +1,10 @@
+<div class="block_auth">
+  <form class="form_auth" [formGroup]="formRegister" (ngSubmit)="signup()">
+    <input [ngClass]="{'input_err': !!errorMessage}" class="input_auth" type="text" formControlName="username" placeholder="Username">
+    <input [ngClass]="{'input_err': !!errorMessage}" class="input_auth" type="password" formControlName="password" placeholder="Password">
+    <input [ngClass]="{'input_err': !!errorMessage}" class="input_auth" type="password" formControlName="password_confirm" placeholder="Password confirmation">
+    <button class="btn-submit" type="submit">Register</button>
+    <a [routerLink]=" ['../login'] ">Go back to login</a>
+    <alert [alertMessage]="errorMessage"></alert>
+  </form>
+</div>

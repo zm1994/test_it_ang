@@ -1,0 +1,9 @@
+<div class="block_auth">
+  <form class="form_auth" [formGroup]="formLogin" (ngSubmit)="login()">
+    <input [ngClass]="{'input_err': !!errorMessage}" class="input_auth" type="text" formControlName="username" placeholder="Username">
+    <input [ngClass]="{'input_err': !!errorMessage}" class="input_auth" type="password" formControlName="password" placeholder="Password">
+    <button class="btn-submit" type="submit">Log in</button>
+    <a [routerLink]=" ['../signup'] ">Do you have an account?</a>
+    <alert [alertMessage]="errorMessage"></alert>
+  </form>
+</div>

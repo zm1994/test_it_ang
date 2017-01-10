@@ -1,0 +1,48 @@
+.block_auth{
+    width: 800px;
+    margin: 20px auto;
+    height: 305px;
+    background: lightseagreen;
+    border-radius: 7px;
+}
+
+.form_auth{
+    margin: auto;
+    width: 500px;
+    padding-top: 50px;
+    position: initial;
+    display: block;        
+}
+
+.input_auth, .btn-submit, .message_err{
+    float: left;
+    width: 100%;
+    border-radius: 7px;
+    height: 35px;
+    padding-left: 3px;
+    margin-top: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+}
+
+.input_auth{
+    padding-left: 9px;
+}
+
+.input_err, .message_err{
+    border: 1px solid red;
+}
+
+a{
+    display: block;
+}
+
+
+.message_err{
+    text-align: center;
+    background: coral;
+    padding-top: 7px;
+    color: crimson;
+}        

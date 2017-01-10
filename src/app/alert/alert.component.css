@@ -1,0 +1,10 @@
+.alert_message{
+    text-align: center;
+    background: coral;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: 7px;
+    color: crimson;
+    box-sizing: border-box;
+    border: 1px solid red;
+}

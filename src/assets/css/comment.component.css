@@ -1,0 +1,26 @@
+.creator_comment, .time_create{
+    color: darkgray;
+    float: left;
+}
+
+.comment_list_item{
+    border: 2px solid darkslategray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    padding: 7px 7px 7px 7px;
+}
+
+.rate{
+    text-align: right;
+}
+
+.rate>img{
+    width: 14px;
+}
+
+.content_comment{
+    font-size: 19px;
+    clear: both;
+    padding: inherit;
+}

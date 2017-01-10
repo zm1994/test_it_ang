@@ -1,0 +1,23 @@
+<header>
+    <a [routerLink]="['']" class="header_logo">Welcome to our shop</a>
+    <ul class="menu">
+        <div *ngIf="!userLogged">
+            <li class="menu_item"><a  [routerLink]="['./signup']">Sign Up</a></li>
+            <li class="menu_item"><a  [routerLink]="['./login']">Login</a></li>
+        </div>
+    </ul>
+</header>
+<main>
+    <router-outlet></router-outlet>
+</main>    
+
+    <!--<pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>-->
+
+    <!--// <footer>
+    //   <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
+    //   <div>
+    //     <a [href]="url">
+    //       <img [src]="angularclassLogo" width="25%">
+    //     </a>
+    //   </div>
+    // </footer>-->

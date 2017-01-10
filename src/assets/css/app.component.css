@@ -1,0 +1,52 @@
+html, body{
+  width: 930px;
+  margin: auto;
+  height: 100%;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+header{
+  background: gray;
+  margin-bottom: 10px;
+  height: 73px;
+}
+
+.header_logo{
+  display: inline-block;
+  float: left;
+  text-decoration: none;
+  width: 46%;
+  font-size: 41px;
+  margin: 13px;
+  padding-left: 8px;
+  color: cornsilk;
+  text-align: center;  
+}
+
+.menu{
+  width: 46%;
+  display: inline-block;
+  text-align: right;
+  font-size: 20px;
+  margin-top: 23px;
+}
+
+.menu_item{
+  display: inline-block;
+  height: 33px;
+  width: 106px;
+  text-align: center;
+}
+
+.menu_item>a{
+  text-decoration: none;
+  color: cornflowerblue;
+  display: inline-block;
+  margin: 3px;
+  color: #444343;
+  font-size: 22px;  
+}
+
+.menu_item>a:hover{
+  color: cornsilk;
+}
